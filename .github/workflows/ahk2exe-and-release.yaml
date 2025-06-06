@@ -3,7 +3,7 @@ name: Ahk2Exe and Release for alt-ime-ahk-mod
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   Ahk2Exe-and-Release:
@@ -11,10 +11,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Ahk2Exe
-        uses: nekocodeX/GitHub-Action-Ahk2Exe@v1.0.1
+        uses: nekocodeX/GitHub-Action-Ahk2Exe@v1.1.0
         with:
           in: alt-ime-ahk-mod.ahk
 
@@ -24,7 +24,7 @@ jobs:
         run: Write-Output ('::set-output name=tag-name::' + ('${{github.ref}}' -replace 'refs/tags/', ''))
 
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{steps.tag-info.outputs.tag-name}}
           name: Release ${{steps.tag-info.outputs.tag-name}}🎉
