@@ -141,17 +141,16 @@ GitHubRepoReadme:
 *~RAlt::
     Send {Blind}{vkFF}
 
-; 左 Alt 空打ちで IME を OFF
+; 左右 Alt 空打ちで IME をトグル
 LAlt up::
     if (A_PriorHotkey == "*~LAlt") {
-        IME_SET(0)
+        IME_SET(!IME_GET())
     }
     Return
 
-; 右 Alt 空打ちで IME を ON
 RAlt up::
     if (A_PriorHotkey == "*~RAlt") {
-        IME_SET(1)
+        IME_SET(!IME_GET())
     }
     Return
 
