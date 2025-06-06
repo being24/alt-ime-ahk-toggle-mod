@@ -14,10 +14,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Download AutoHotkey
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/AutoHotkey/AutoHotkey/releases/download/v1.1.37.02/AutoHotkey_1.1.37.02.zip" -OutFile "AutoHotkey.zip"
+          Expand-Archive -Path "AutoHotkey.zip" -DestinationPath "AutoHotkey"
+        shell: powershell
+
       - name: Ahk2Exe
-        uses: nekocodeX/GitHub-Action-Ahk2Exe@v1.1.0
+        uses: nekocodeX/GitHub-Action-Ahk2Exe@main
         with:
           in: alt-ime-ahk-mod.ahk
+          ahk: AutoHotkey/Compiler/Ahk2Exe.exe
 
       - name: Collect tag information
         id: tag-info
