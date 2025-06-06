@@ -21,10 +21,17 @@ jobs:
         shell: powershell
 
       - name: Ahk2Exe
-        uses: nekocodeX/GitHub-Action-Ahk2Exe@main
-        with:
-          in: alt-ime-ahk-mod.ahk
-          ahk: AutoHotkey/Compiler/Ahk2Exe.exe
+        shell: pwsh
+        run: |
+          $cwd = (Get-Item .).FullName;
+          # 既にAutoHotkeyをダウンロード・展開済みなので、そのパスを使う
+          $ahk2exe = "$cwd/AutoHotkey/Compiler/Ahk2Exe.exe"
+          $baseFile = "$cwd/AutoHotkey/Compiler/Unicode 32-bit.bin"
+          $command = '"' + $ahk2exe + '" /silent /verbose '
+          $command += '/in "alt-ime-ahk-mod.ahk" '
+          $command += '/out "alt-ime-ahk-mod.exe" '
+          $command += '/base "' + $baseFile + '" '
+          Invoke-Expression $command
 
       - name: Collect tag information
         id: tag-info
