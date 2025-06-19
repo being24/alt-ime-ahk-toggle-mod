@@ -136,17 +136,17 @@ GitHubRepoReadme:
     Return
 
 ; 上部メニューがアクティブになるのを抑制 / Xbox Game Bar 起動用仮想キーコードとのバッティング回避 (vk07 -> vkFF)
-*~LAlt::
-    Send {Blind}{vkFF}
+;*~LAlt::
+;    Send {Blind}{vkFF}
 *~RAlt::
     Send {Blind}{vkFF}
 
 ; 左右 Alt 空打ちで IME をトグル
-LAlt up::
-    if (A_PriorHotkey == "*~LAlt") {
-        IME_SET(!IME_GET())
-    }
-    Return
+;LAlt up::
+;    if (A_PriorHotkey == "*~LAlt") {
+;        IME_SET(!IME_GET())
+;    }
+;    Return
 
 RAlt up::
     if (A_PriorHotkey == "*~RAlt") {
