@@ -154,6 +154,11 @@ RAlt up::
     }
     Return
 
+; Ctrl + Space で IME をトグル
+^Space::
+    IME_SET(!IME_GET())
+    Return
+
 ; CapsLock 0.75秒 長押しで ON (OFF は変更なし)
 CapsLock::
     KeyWait, CapsLock, T0.75
